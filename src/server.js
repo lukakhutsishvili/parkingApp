@@ -27,10 +27,10 @@ async function init() {
     });
     app.post("/api/products", async (req, res) => {
       try {
-        const { costumername, costumerpassword } = req.body;
+        const { name, pass } = req.body;
         const resultQuery = await pool.query(
-          "INSERT INTO customer(costumername, costumerpassword) VALUES($1, $2)",
-          [costumername, costumerpassword]
+          "INSERT INTO customer(name, pass) VALUES($1, $2)",
+          [name, pass]
         );
         const rows = resultQuery.rows;
         return res.status(201).json(rows);
