@@ -11,5 +11,9 @@ const pool = new Pool({
 });
 
 export const createTable = async () => {
-  return await pool.query("CREATE TABLE IF NOT EXISTS costumer(id SERIAL PRIMARY KEY, title TEXT, price INT)");
+  return await pool.query(
+    "CREATE TABLE IF NOT EXISTS costumer(id SERIAL PRIMARY KEY, title TEXT, price INT)"
+  );
 };
+
+export default pool;
