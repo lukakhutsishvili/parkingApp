@@ -1,5 +1,5 @@
 import express from "express";
-import { createTable } from "./config/sql";
+import { createTable } from "./config/sql.js";
 
 const app = express();
 
