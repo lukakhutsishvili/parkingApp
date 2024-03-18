@@ -29,7 +29,7 @@ async function init() {
       try {
         const { username, password } = req.body;
         const resultQuery = await pool.query(
-          "INSERT INTO TABLE  costumer(username, password) VALUES($1, $2)",
+          "INSERT INTO costumer(username, password) VALUES($1, $2)",
           [username, password]
         );
         const row = resultQuery.rows[0];
