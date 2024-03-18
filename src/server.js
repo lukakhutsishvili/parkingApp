@@ -32,8 +32,8 @@ async function init() {
           "INSERT INTO customer(costumername, costumerpassword) VALUES($1, $2)",
           [costumername, costumerpassword]
         );
-        const row = resultQuery.rows[0];
-        return res.status(201).json(row);
+        const rows = resultQuery.rows;
+        return res.status(201).json(rows);
       } catch (error) {
         return res.status(401).json(error);
       }
