@@ -18,3 +18,5 @@ async function init() {
     app.listen(3000);
   }
 }
+
+init();
