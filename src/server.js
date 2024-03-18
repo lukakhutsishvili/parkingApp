@@ -16,21 +16,21 @@ async function init() {
   function serverStart() {
     app.use(bodyParser.json());
     app.use(cors());
-    app.get("/", async (_, res) => {
+    app.get("/api/products", async (_, res) => {
       try {
-        const resultQuery = await pool.query("SELECT * FROM costumer");
+        const resultQuery = await pool.query("SELECT * FROM customer");
         const rows = resultQuery.rows;
         return res.status(200).json(rows);
       } catch (error) {
         return res.status(401).json(error);
       }
     });
-    app.post("/", async (req, res) => {
+    app.post("/api/products", async (req, res) => {
       try {
-        const { username, password } = req.body;
+        const { title, price } = req.body;
         const resultQuery = await pool.query(
-          "INSERT INTO costumer(username, password) VALUES($1, $2)",
-          [username, password]
+          "INSERT INTO customer(title, price) VALUES($1, $2)",
+          [title, price]
         );
         const row = resultQuery.rows[0];
         return res.status(201).json(row);
