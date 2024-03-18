@@ -1,13 +1,14 @@
 import pgk from "pg";
+import dotenv from "dotenv";
 
 const { Pool } = pgk;
 
 const pool = new Pool({
-  host: "dpg-cns3sbq0si5c73c235sg-a",
-  port: 5432,
-  database: "parkingapp",
-  user: "parkingapp_user",
-  password: "V5mn64dabA0IsoGUGdVTc5Bgmn5I54nP",
+  host: process.env.POSTGRE_HOST,
+  port: process.env.POSTGRE_PORT,
+  database: process.env.POSTGRE_DATABASE,
+  user: process.env.POSTGRE_USER,
+  password: process.env.POSTGRE_PASSWORD,
 });
 
 export const createTable = async () => {

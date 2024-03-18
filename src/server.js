@@ -2,6 +2,7 @@ import express from "express";
 import pool, { createTable } from "./config/sql.js";
 import bodyParser from "body-parser";
 import cors from "cors";
+import costumerRouter from "./routes/costumerRoutes.js";
 
 const app = express();
 
@@ -16,28 +17,10 @@ async function init() {
   function serverStart() {
     app.use(bodyParser.json());
     app.use(cors());
-    app.get("/api/get", async (_, res) => {
-      try {
-        const resultQuery = await pool.query("SELECT * FROM customer");
-        const rows = resultQuery.rows;
-        return res.status(200).json(rows);
-      } catch (error) {
-        return res.status(401).json(error);
-      }
-    });
-    app.post("/api/post", async (req, res) => {
-      try {
-        const { title, price } = req.body;
-        const resultQuery = await pool.query(
-          "INSERT INTO customer(title, price) VALUES($1, $2)",
-          [title, price]
-        );
-        const rows = resultQuery.rows;
-        return res.status(201).json(rows);
-      } catch (error) {
-        return res.status(401).json(error);
-      }
-    });
+
+    app.get("/api", costumerRouter);
+    app.post("/api", costumerRouter);
+
     app.listen(3000);
   }
 }
