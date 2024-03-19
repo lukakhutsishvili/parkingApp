@@ -1,0 +1,43 @@
+
+
+openapi: 3.0.0
+info:
+  title: todoList
+  description: todoList app API
+  version: 0.1.9
+
+servers:
+  - url: https://parkingapp-9o28.onrender.com/api
+    description: Production server
+  - url: http://localhost:3000/api
+    description: Local server
+
+paths:
+  /todoList:
+    get:
+      tags:
+        - costumer
+      responses:
+        "200":
+          description: Successfully fetched
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+
+  /sendTodo:
+    post:
+      tags:
+        - costumers
+      requestBody:
+        description: Add costumer
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/costumer"
+      responses:
+        "200":
+          description: costumer added successfully

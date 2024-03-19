@@ -3,6 +3,7 @@ import pool, { createTable } from "./config/sql.js";
 import bodyParser from "body-parser";
 import cors from "cors";
 import costumerRouter from "./routes/costumerRoutes.js";
+import SwaggerMiddleware from "./middlewares/swaggermiddleware.js";
 
 const app = express();
 
@@ -18,8 +19,8 @@ async function init() {
     app.use(bodyParser.json());
     app.use(cors());
 
-    app.get("/api", costumerRouter);
-    app.post("/api", costumerRouter);
+    app.use("/api", costumerRouter);
+    app.use("/", ...SwaggerMiddleware());
 
     app.listen(3000);
   }
