@@ -27,17 +27,17 @@ paths:
                 items:
                   type: string
 
-  /addcostumers:
+  /addcustomers:
     post:
       tags:
-        - costumers
+        - customers
       requestBody:
-        description: Add costumer
+        description: Add customer
         required: true
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/costumer"
+              $ref: "#/components/schemas/CustomerInput"
       responses:
-        "200":
-          description: costumer added successfully
+        "201":
+          description: Customer added successfully
