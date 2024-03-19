@@ -1,5 +1,5 @@
 import express from "express";
-import pool, { createTable } from "./config/sql.js";
+import pool, {  createTables } from "./config/sql.js";
 import bodyParser from "body-parser";
 import cors from "cors";
 import costumerRouter from "./routes/costumerRoutes.js";
@@ -9,7 +9,7 @@ const app = express();
 
 async function init() {
   try {
-    await createTable();
+    await createTables();
     serverStart();
   } catch (error) {
     console.log(error);

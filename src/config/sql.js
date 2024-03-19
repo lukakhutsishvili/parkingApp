@@ -11,9 +11,9 @@ const pool = new Pool({
   password: process.env.POSTGRE_PASSWORD,
 });
 
-export const createTable = async () => {
+export const createTables = async () => {
   return await pool.query(
-    "CREATE TABLE IF NOT EXISTS customer(id SERIAL PRIMARY KEY, title TEXT, price INT)"
+    "CREATE TABLE IF NOT EXISTS customers(id SERIAL PRIMARY KEY, name TEXT, password TEXT)"
   );
 };
 
