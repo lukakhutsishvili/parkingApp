@@ -13,7 +13,7 @@ servers:
     description: Local server
 
 paths:
-  /todoList:
+  /costumers:
     get:
       tags:
         - costumer
@@ -27,7 +27,7 @@ paths:
                 items:
                   type: string
 
-  /sendTodo:
+  /addcostumers:
     post:
       tags:
         - costumers
